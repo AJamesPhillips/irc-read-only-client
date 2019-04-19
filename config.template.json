@@ -1,0 +1,8 @@
+{
+  "server": "server.com",
+  "port": 6668,
+  "real_name": "Real Name",
+  "nickname": "nickname",
+  "username": "username",
+  "channel": "#channel-to-join"
+}
