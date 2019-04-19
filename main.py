@@ -12,7 +12,8 @@ def get_config():
 def write_to_file (filename, message):
   print(filename, "<", message)
   with open(dir_path + "/" + filename, "a") as f:
-    f.write(message)
+    message_with_date = json.dumps({ "date": str(datetime.now()), "message": message })
+    f.write(message_with_date)
 
 OUTPUT_FILE = "output.txt"
 DEBUG_FILE = "debug.txt"
@@ -58,5 +59,4 @@ while True:
     response_to_ping = pong + resp
     send(response_to_ping)
   else:
-    message = json.dumps({ "date": str(datetime.now()), "message": data })
     write_to_file(filename=OUTPUT_FILE, message=message)
