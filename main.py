@@ -1,3 +1,5 @@
+#!/usr/bin/python2
+
 import socket
 import os
 import json
@@ -10,10 +12,11 @@ def get_config():
     return json.load(f)
 
 def write_to_file (filename, message):
-  print(filename, "<", message)
+  if get_config().get("debug", False):
+    print(filename, "<", message)
   with open(dir_path + "/" + filename, "a") as f:
     message_with_date = json.dumps({ "date": str(datetime.now()), "message": message })
-    f.write(message_with_date)
+    f.write(message_with_date + "\n")
 
 OUTPUT_FILE = "output.txt"
 DEBUG_FILE = "debug.txt"
@@ -59,4 +62,4 @@ while True:
     response_to_ping = pong + resp
     send(response_to_ping)
   else:
-    write_to_file(filename=OUTPUT_FILE, message=message)
+    write_to_file(filename=OUTPUT_FILE, message=data)
