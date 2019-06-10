@@ -62,4 +62,6 @@ while True:
     response_to_ping = pong + resp
     send(response_to_ping)
   else:
-    write_to_file(filename=OUTPUT_FILE, message=data)
+    msg = data if data else "RECEIVED no data.  Socket closed.  Exiting"
+    debug(msg)
+    write_to_file(filename=OUTPUT_FILE, message=msg)
