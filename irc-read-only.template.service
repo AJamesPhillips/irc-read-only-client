@@ -1,0 +1,13 @@
+[Unit]
+Description=Read only irc client
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/var/www/irc-read-only-client/main.py
+User=www-data
+WorkingDirectory=/var/www/irc-read-only-client
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
